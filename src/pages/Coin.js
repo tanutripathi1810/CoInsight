@@ -18,6 +18,7 @@ function Coin() {
     const [days, setDays] = useState(30);
     const [chartData, setChartData] = useState({});
     const [priceType, setPriceType] = useState("prices");
+    const[error,setError]=useState(false);
     
     useEffect(() => {
       if(id)  {
@@ -26,10 +27,11 @@ function Coin() {
     }, [id]);
 
     async function getData(){
-      const data=await getCoinData(id);
+      setIsLoading(true);
+      const data=await getCoinData(id,setError);
       if(data){
         coinObject(setCoinData,data);
-        const prices=await getCoinPrices(id,days,priceType);
+        const prices=await getCoinPrices(id,days,priceType,setError);
         if(prices){
           settingChartData(setChartData, prices);
           setIsLoading(false);
@@ -41,7 +43,7 @@ function Coin() {
     const handleDaysChange=async (event)=>{
       setIsLoading(true);
       setDays(event.target.value);
-      const prices=await getCoinPrices(id,event.target.value,priceType);
+      const prices=await getCoinPrices(id,event.target.value,priceType,setError);
         if(prices){
           settingChartData(setChartData,prices);
           setIsLoading(false);
@@ -53,7 +55,7 @@ function Coin() {
   const handlePriceTypeChange =async (event, newType) => {
     setIsLoading(true);
     setPriceType(newType);
-    const prices=await getCoinPrices(id,days,newType);
+    const prices=await getCoinPrices(id,days,newType,setError);
         if(prices){
           settingChartData(setChartData,prices);
           setIsLoading(false);

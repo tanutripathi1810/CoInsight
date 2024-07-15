@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { get100Coins } from '../../../functions/get100coins';
+import SelectDays from '../../Coin/SelectDays';
 import './styles.css';
 function SelectCoins({allCoins,crypto1,crypto2,handleCoinChange,days,handleDaysChange,}) {
     
@@ -27,7 +27,8 @@ function SelectCoins({allCoins,crypto1,crypto2,handleCoinChange,days,handleDaysC
     
   return (
     <div className='coins-flex'>
-        <p>Crypto1</p>
+    
+        <p>Crypto1:  </p>
       <Select
          sx={styles}
           value={crypto1}
@@ -40,7 +41,7 @@ function SelectCoins({allCoins,crypto1,crypto2,handleCoinChange,days,handleDaysC
                 value={coin.id}>{coin.name}</MenuItem>
             ))}
         </Select>  
-        <p>Crypto2</p>
+        <p>Crypto2:  </p>
       <Select
          sx={styles}
           value={crypto2}
@@ -53,7 +54,8 @@ function SelectCoins({allCoins,crypto1,crypto2,handleCoinChange,days,handleDaysC
                 value={coin.id}>{coin.name}</MenuItem>
             ))}
         </Select>  
-
+        
+        
     </div>
   )
 }

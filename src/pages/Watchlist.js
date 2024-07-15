@@ -3,6 +3,7 @@ import Button from "../compnents/Common/Button";
 import Header from "../compnents/Common/Header";
 import TabsComponent from "../compnents/Dashboard/Tabs";
 import { get100Coins } from "../functions/get100coins";
+import Footer from "../compnents/Common/Footer";
 
 function Watchlist() {
   const watchlist = JSON.parse(localStorage.getItem("watchlist"));
@@ -39,12 +40,14 @@ function Watchlist() {
             }}
           >
             <a href="/dashboard">
-              <Button text="Dashboard" />
+              <Button text="Dashboard" onClick={() => console.log("btn Clicked")}/>
             </a>
           </div>
         </div>
       )}
+      
     </div>
+  
   );
 }
 

@@ -3,14 +3,15 @@ import axios from "axios";
 export const getCoinPrices = (id, days, priceType, setError) => {
   const prices = axios
     .get(
-      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
+      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`,
+      {crossDomain:true}
     )
     .then((response) => {
       if (response.data) {
         console.log("Prices>>>", response.data);
-        if (priceType == "market_caps") {
+        if (priceType == "market_cap") {
           return response.data.market_caps;
-        } else if (priceType == "total_volumes") {
+        } else if (priceType == "total_volume") {
           return response.data.total_volumes;
         } else {
           return response.data.prices;

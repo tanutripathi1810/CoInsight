@@ -5,9 +5,14 @@ import Dashboard from './pages/Dashboard';
 import Coin from './pages/Coin';
 import ComparePage from './pages/ComparePage';
 import Watchlist from './pages/Watchlist';
+import { createTheme,ThemeProvider } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
 function App() {
+  
   return (
     <div className='App'>
+      
+       
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
@@ -18,6 +23,7 @@ function App() {
         
       </Routes>
       </BrowserRouter>
+      
       
     </div>
   );
